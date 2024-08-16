@@ -4,7 +4,8 @@ import dotenv from 'dotenv';
 import connectMongoDB from './utils/db.js';
 
 // import seedUsers from './seedFolder/addUsers.js';
-import seedGoals from './seedFolder/addGoals.js';
+// import seedGoals from './seedFolder/addGoals.js';
+// import seedProgress from './seedFolder/trackProgress.js';
 
 dotenv.config();
 
@@ -37,7 +38,8 @@ app.use(express.json());
 //
 
 connectMongoDB();
-seedGoals();
+
+
 
 
 app.get('/', (req, res) => {

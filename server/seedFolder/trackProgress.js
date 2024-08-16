@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import ProgressSchema from '../models/Progress';
+import ProgressSchema from '../models/Progress.js';
 
 const ProgressData = mongoose.model("Progress", ProgressSchema);
 
@@ -33,7 +33,7 @@ const seedProgress = async () => {
                     date: new Date('2024-08-08')
                 },
             ];
-            await ProgressModel.insertMany(initialProgress);
+            await ProgressData.insertMany(initialProgress);
             console.log('Progress entries seeded successfully.');
         } else {
             console.log('Progress entries already exist. Skipping ahead.');
@@ -43,4 +43,4 @@ const seedProgress = async () => {
     }
 };
 
-export default seedProgress();
+export default seedProgress;
