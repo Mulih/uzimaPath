@@ -35,25 +35,7 @@ app.use(express.json());
 // to the client as JSON.
 //
 
-connectMongoDB()
-    .then(() => {
-        let database = mongoose.connection.db;
-
-        app.get('/members/all', (req, res) => {
-            database.collection("users").find({}).toArray()
-            .then(result => {
-                res.send(result);
-            })
-            .catch(error => {
-                console.error('Error fetching members:', error.message);
-                express.res.status(500).send({ error: 'Failed to load members' });
-            });
-        });
-}).catch(error => {
-    console.error('Error connecting to the database:', error.message);
-});
-
-
+connectMongoDB();
 
 
 app.get('/', (req, res) => {
