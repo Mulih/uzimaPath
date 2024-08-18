@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import connectMongoDB from './utils/db.js';
 import seedUsers from './seedFolder/addUsers.js';
+import authRoutes from './routes/authRoutes.js';
 
 
 
@@ -17,6 +18,9 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 
 //
 // This server is built with Express.js and uses the Mongoose library to connect
@@ -40,7 +44,7 @@ app.use(express.json());
 connectMongoDB();
 seedUsers();
 
-
+app.use('/auth', authRoutes);
 
 
 app.get('/', (req, res) => {
