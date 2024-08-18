@@ -15,7 +15,7 @@ import { fetchExercises, createExercise } from '../services/api.js';
         <h1>Exercises</h1>
         <ul>
             {exercises.map(exercise => (
-                <li key={exercise.id}>{exercise.name}</li>
+                <li key={exercise.user.id}>{exercise.user.username} : ({exercise.type} - {exercise.duration})</li>
             ))}
         </ul>
         {/* Form to log new exercise */}
