@@ -12,8 +12,9 @@ export const createExercise = async (req, res) => {
 
 export const getExercises = async (req, res) => {
     try {
-        const getExercises = await Exercise.find({});
-        res.status(200).json(goals);
+
+        const exercises = await Exercise.find({ });
+        res.status(200).json(exercises);
     } catch (error) {
         res.status(500).json({ error: 'Couldnt display exercises. Try again after a few minutes.' });
     }

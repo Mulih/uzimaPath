@@ -6,7 +6,7 @@ import authRoutes from './routes/authRoutes.js';
 import goalRoutes from './routes/goalRoutes.js';
 import exerciseRoutes from './routes/exerciseRoutes.js';
 import progressRoutes from './routes/progressRoutes.js';
-import seedExercises from './seedFolder/addExercises.js';
+
 
 
 
@@ -45,20 +45,20 @@ app.use(express.urlencoded({ extended: true }));
 //
 
 connectMongoDB();
-seedExercises();
-
-
-app.use('/auth', authRoutes);
-app.use('/goals', goalRoutes);
-app.use('/exercises', exerciseRoutes);
-;
-app.use('/progress', progressRoutes);
 
 
 
-app.get('/', (req, res) => {
+app.use("/api/", authRoutes);
+app.use("/api/", goalRoutes);
+app.use("/api/", exerciseRoutes);
+
+app.use("/api/progress/", progressRoutes);
+
+
+
+app.get("/", (req, res) => {
     res.status(200).json({
-        message: 'UzimaPath'
+        message: 'UzimaPath app.'
     });
 });
 

@@ -5,6 +5,8 @@ import User from '../models/User.js';
 
 export const register = async (req, res) => {
 
+    console.log({ "username": "kamau11", "email": "kamau@gmail.com", "password": "password1234", "age": 25, "isAdmin": false });
+
     const { username, password } = req.body;
     try {
         const existingUser = await User.findOne({ username });
