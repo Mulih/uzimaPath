@@ -1,10 +1,11 @@
 import { BrowserRouter} from 'react-router-dom';
+import Home from './pages/Home.js';
 function App() {
   return (
 
     <div className="App">
       <BrowserRouter>
-        <h1>uzimaPath</h1>
+        <Home />
       </BrowserRouter>
     </div>
   );
