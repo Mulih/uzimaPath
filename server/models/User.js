@@ -12,18 +12,26 @@ const UserSchema = new mongoose.Schema(
         type: String,
         required: true,
         unique: true,
+        lowercase: true,
         },
         password: {
         type: String,
-        required: true
+        required: true,
+        minlength: 8,
         },
         age: {
         type: Number,
         default: null,
         },
+        isAdmin: {
+            type: Boolean,
+            default: false,
+        }
     },
     { timestamps: true }
 );
+
+// const User = mongoose.model('user', userSchema);
 
 export default UserSchema;
 

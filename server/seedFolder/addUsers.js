@@ -1,8 +1,10 @@
-import UserSchema from './models/User.js';
+import UserSchema from '../models/User.js';
 import mongoose from 'mongoose';
-import UserSchema from './models/UserSchema.js';
+import bcrypt from 'bcryptjs';
 
 const UserData = mongoose.model("User", UserSchema);
+
+const saltRounds = 10;
 
 const seedUsers = async () => {
     try {
@@ -14,31 +16,41 @@ const seedUsers = async () => {
                       username: 'kamau11',
                       email: 'kamau@gmail.com',
                       password: 'password1234',
-                      age: 25
+                      age: 25,
+                      isAdmin: false
                   },
                   {
                       username: 'alvinmulih',
                       email: 'kyalomuli1@gmail.com',
-                      password: 'password123',
-                      age: 25
+                      password: 'passwd123',
+                      age: 25,
+                      isAdmin: true
                   },
                   {
                       username: 'Michelle23',
                       email: 'Michelle23@example.com',
                       password: 'user2pass',
-                      age: 30
+                      age: 30,
+                      isAdmin: false
                   },
                   {
                       username: 'user3',
                       email: 'user3@example.com',
                       password: 'user3pass',
-                      age: 35
+                      age: 35,
+                      isAdmin: false
                   },
               ];
-              await UserData.insertMany(initialData);
-              console.log('Data seeded successfully.');
+              const hashedDataPromises = initialData.map(async (user) => ({
+                ...user,
+                password: await bcrypt.hash(user.password, saltRounds),
+              }));
+
+              const hashedData = await Promise.all(hashedDataPromises);
+              await UserData.insertMany(hashedData);
+              console.log('Users seeded successfully.');
           } else {
-              console.log('Data already exists. Skipping ahead.');
+              console.log('Users already exists. Skipping ahead.');
           }
     } catch (error) {
       console.log('Error inserting sample users:', error);
