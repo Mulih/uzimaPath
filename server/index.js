@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import connectMongoDB from './utils/db.js';
 import seedUsers from './seedFolder/addUsers.js';
 import authRoutes from './routes/authRoutes.js';
+import goalRoutes from './routes/goalRoutes.js'
 
 
 
