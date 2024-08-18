@@ -3,9 +3,9 @@ import { createGoal, getGoals, updateGoal, deleteGoal } from '../controllers/goa
 
 const router = express.Router();
 
-router.post('/goal', createGoal);
-router.get('/goal', getGoals);
-router.put('/goal/:id', updateGoal);
-router.post('/goal/:id', deleteGoal);
+router.post('/goals', createGoal);
+router.get('/goals', getGoals);
+router.put('/goals/:id', updateGoal);
+router.post('/goals/:id', deleteGoal);
 
 export default router;

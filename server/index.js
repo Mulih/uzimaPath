@@ -2,9 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectMongoDB from './utils/db.js';
-import seedUsers from './seedFolder/addUsers.js';
 import authRoutes from './routes/authRoutes.js';
 import goalRoutes from './routes/goalRoutes.js';
+import exerciseRoutes from './routes/exerciseRoutes.js';
 
 
 
@@ -43,10 +43,12 @@ app.use(express.urlencoded({ extended: true }));
 //
 
 connectMongoDB();
-seedUsers();
+
 
 app.use('/auth', authRoutes);
 app.use('/goal', goalRoutes);
+app.use('/exercises', exerciseRoutes);
+
 
 
 app.get('/', (req, res) => {
