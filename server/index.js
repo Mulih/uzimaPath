@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import connectMongoDB from './utils/db.js';
 import seedUsers from './seedFolder/addUsers.js';
 import authRoutes from './routes/authRoutes.js';
-import goalRoutes from './routes/goalRoutes.js'
+import goalRoutes from './routes/goalRoutes.js';
 
 
 
@@ -46,6 +46,7 @@ connectMongoDB();
 seedUsers();
 
 app.use('/auth', authRoutes);
+app.use('/goal', goalRoutes);
 
 
 app.get('/', (req, res) => {
