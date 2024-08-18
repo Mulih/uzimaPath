@@ -5,6 +5,7 @@ import connectMongoDB from './utils/db.js';
 import authRoutes from './routes/authRoutes.js';
 import goalRoutes from './routes/goalRoutes.js';
 import exerciseRoutes from './routes/exerciseRoutes.js';
+import progressRoutes from './routes/progressRoutes.js';
 
 
 
@@ -48,6 +49,7 @@ connectMongoDB();
 app.use('/auth', authRoutes);
 app.use('/goal', goalRoutes);
 app.use('/exercises', exerciseRoutes);
+app.use('/progress', progressRoutes);
 
 
 
