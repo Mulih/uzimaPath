@@ -34,4 +34,4 @@ const GoalSchema = new mongoose.Schema(
     },
 )
 
-export default GoalSchema;
+const Goal = mongoose.model('Goal', GoalSchema);
