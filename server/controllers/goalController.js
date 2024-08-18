@@ -13,8 +13,7 @@ export const createGoal = async (req, res) => {
 export const getGoals = async (req, res) => {
     try {
         const goals = await Goal.find({});
-        res.status(200).json(goals);
-        console.log(goals);
+        return res.status(200).json(goals);
     } catch (error) {
         res.status(500).json({ error: 'Couldnt display goals. Try again after a few minutes.' });
     }

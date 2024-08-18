@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import User from '../models/User.js';
 
 export const register = async (req, res) => {
+
     const { username, password } = req.body;
     try {
         const existingUser = await User.findOne({ username });

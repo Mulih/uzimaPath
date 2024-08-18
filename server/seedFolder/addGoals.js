@@ -18,7 +18,7 @@ const seedGoals = async () => {
                     frequency: 'Daily',
                     start_date: new Date('2024-08-19'),
                     end_date: new Date('2024-12-31'),
-                    UserId: '626c8d7e4b5e6a7e4b5e6a7e'
+                    UserId: '66c1343d639debb5a60d3c93'
                 },
                 {
                     username: 'alvinmulih',
@@ -29,7 +29,7 @@ const seedGoals = async () => {
                     frequency: 'weekly',
                     start_date: new Date('2024-09-01'),
                     end_date: new Date('2024-10-31'),
-                    UserId: '626c8d7e4b5e6a7e4b5e6a7e'
+                    UserId: '66c1343d639debb5a60d3c93'
                 },
                 {
                     username: 'kamau11',
@@ -40,7 +40,7 @@ const seedGoals = async () => {
                     frequency: 'Daily',
                     start_date: new Date('2024-08-19'),
                     end_date: new Date('2024-12-31'),
-                    UserId: '66bf9051bdcf61a7ce72c7a0'
+                    UserId: '66c1343d639debb5a60d3c92'
                 },
                 {
                     username: 'kamau11',
@@ -51,7 +51,7 @@ const seedGoals = async () => {
                     frequency: 'Daily',
                     start_date: new Date('2024-08-19'),
                     end_date: new Date('2024-12-31'),
-                    UserId: '66bf9051bdcf61a7ce72c7a0'
+                    UserId: '66c1343d639debb5a60d3c92'
                 },
                 {
                     username: 'Michelle23',
@@ -62,7 +62,7 @@ const seedGoals = async () => {
                     frequency: 'Daily',
                     start_date: new Date('2024-08-25'),
                     end_date: new Date('2025-02-28'),
-                    UserId: '66bf9051bdcf61a7ce72c79f'
+                    UserId: '66c1343d639debb5a60d3c94'
                 },
             ];
             await GoalModel.insertMany(initialGoals);

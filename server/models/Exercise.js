@@ -42,6 +42,6 @@ const ExerciseSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-const Exercise = mongoose.model('exercise', ExerciseSchema);
+//
 
-export default Exercise;
+export default ExerciseSchema;
