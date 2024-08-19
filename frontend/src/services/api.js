@@ -21,7 +21,7 @@ export  const updateExercise = (id, exerciseData) => axios.put(`${API_BASE_URL}/
 export const deleteExercise = (id) => axios.delete(`${API_BASE_URL}/api/exercises/${id}`)
 
 // Goals
-export const fetchGoals = () => axios.get(`${API_BASE_URL}/goals`);
-export const createGoal = (goalData) => axios.post(`${API_BASE_URL}/goals`, goalData);
-export const updateGoal = (id, goalData) => axios.put(`${API_BASE_URL}/goals/${id}`, goalData);
-export const deleteGoal = (id) => axios.post(`${API_BASE_URL}/goals/${id}`);
+export const fetchGoals = () => axios.get(`${API_BASE_URL}/api/goals`);
+export const createGoal = (goalData) => axios.post(`${API_BASE_URL}/api/goals`, goalData);
+export const updateGoal = (id, goalData) => axios.put(`${API_BASE_URL}/api/goals/${id}`, goalData);
+export const deleteGoal = (id) => axios.post(`${API_BASE_URL}/api/goals/${id}`);
