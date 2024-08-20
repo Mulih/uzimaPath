@@ -1,21 +1,33 @@
 import Progress from '../models/Progress.js';
+import mongoose from 'mongoose';
 
 export const createProgress = async (req, res) => {
+    const { user, goal, progressAmount } = req.body;
     try {
-        const progress = new Progress(req.body);
-        await progress.save();
-        res.status(201).json({ message: 'Progress created successfully!', progress });
+        const progress = await Progress.create({ user, goal, progressAmount });
+        res.status(200).json(progress);
     } catch (error) {
-        res.status(500).json({ error: 'Something went wrong!' });
+        res.status(400).json({ error: error.message });
     }
 };
 
-export const getProgressByUserId = async (req, res) => {
+export const getProgress = async (req, res) => {
+    const { goal } = req.params;
+
+
+    if (!mongoose.Types.ObjectId.isValid(goal)) {
+        return res.status(400).json({ error: 'No such progress exists' });
+    }
+
     try {
-        const progressEntries = await Progress.find({ user: req.params.userId }.populate('goal'));
-        res.status(200).json(progressEntries);
+
+        const progress = await Progress.find(goal);
+        if (!progress){
+            return res.status(404).json({ error: 'Couldnt display progress. Try again after a few minutes.' });
+        }
+        res.status(200).json(progress);
     } catch (error) {
-        res.status(500).json({ error: 'Couldnt display Progress. Try again after a few minutes.' });
+        res.status(500).json({ error: 'Couldnt display progress. Try again after a few minutes.' });
     }
 };
 

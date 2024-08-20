@@ -2,20 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { fetchExercises, createExercise } from '../services/api.js';
 
   const Exercises = () =>  {
-    // const [exercises, setExercises] = useState([]);
+    const [exercises, setExercises] = useState([]);
 
-    // useEffect(() => {
-    //     fetchExercises()
-    //         .then(response => setExercises(response.data))
-    //         .catch(console.error);
-    // }, []);
+    useEffect(() => {
+        fetchExercises()
+            .then(response => setExercises(response.data))
+            .catch(console.error);
+    }, []);
 
 	return (
 	  <div>
         <h1>Exercises</h1>
-        List of exercises
+        <h2>List of exercises</h2>
         <ul>
-
+            {exercises.map(exercise => (
+                <li key={exercise._id}>{exercise.title} : {exercise.type} - duration(min):{exercise.duration}</li>
+            ))}
         </ul>
         Form to log new exercise
         Add more detailed exercise view here

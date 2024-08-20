@@ -6,7 +6,7 @@ import authRoutes from './routes/authRoutes.js';
 import goalRoutes from './routes/goalRoutes.js';
 import exerciseRoutes from './routes/exerciseRoutes.js';
 import progressRoutes from './routes/progressRoutes.js';
-import seedProgress from './seedFolder/trackProgress.js';
+
 
 
 
@@ -54,14 +54,13 @@ app.use(express.urlencoded({ extended: true }));
 //
 
 connectMongoDB();
-seedProgress();
+
 
 
 
 app.use("/api/auth", authRoutes);
 app.use("/api/goals", goalRoutes);
 app.use("/api/exercises", exerciseRoutes);
-
 app.use("/api/progress", progressRoutes);
 
 

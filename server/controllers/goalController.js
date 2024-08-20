@@ -21,13 +21,17 @@ export const getGoals = async (req, res) => {
     }
 };
 export const getGoal = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.params.userId;
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ error: 'No such goal exists' });
     }
 
     try {
         const goals = await Goal.findById(id);
+
+        if(!goals) {
+            return res.status(404).json({ error: 'No such goal exists' });
+        }
         res.status(200).json(goals);
     } catch (error) {
         res.status(500).json({ error: 'Couldnt display goals. Try again after a few minutes.' });
