@@ -11,9 +11,11 @@ export const createGoal = async (req, res) => {
 };
 
 export const getGoals = async (req, res) => {
+    const { userId } = req.body.userId;
+
     try {
-        const goals = await Goal.find({});
-        return res.status(200).json(goals);
+        const goals = await Goal.findById(userId);
+        res.status(200).json(goals);
     } catch (error) {
         res.status(500).json({ error: 'Couldnt display goals. Try again after a few minutes.' });
     }

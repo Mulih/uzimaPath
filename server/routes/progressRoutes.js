@@ -3,9 +3,9 @@ import { createProgress, getProgressByUserId, updateProgress, deleteProgress } f
 
 const router = express.Router();
 
-router.post('/Progress', createProgress);
-router.get('/Progress', getProgressByUserId);
-router.put('/Progress/:id', updateProgress);
-router.post('/Progress/:id', deleteProgress);
+router.post('/', createProgress);
+router.get('/:id', getProgressByUserId);
+router.put('/:id', updateProgress);
+router.post('/:id', deleteProgress);
 
 export default router;

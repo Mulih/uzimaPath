@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 import ProgressSchema from '../models/Progress.js';
 
-const ProgressData = mongoose.model("Progress", ProgressSchema);
+const ProgressData = mongoose.model('Progress', ProgressSchema);
+
 
 const seedProgress = async () => {
     try {
@@ -9,26 +10,26 @@ const seedProgress = async () => {
         if (existingData.length === 0) {
             const initialProgress = [
                 {
-                    user: '626c8d7e4b5e6a7e4b5e6a7e',
-                    goal: '66bfb28da0e39b7a04adde1f',
+                    user: '66c1343d639debb5a60d3c92',
+                    goal: '66c1c21bf928121690ed9f72',
                     progressAmount: 20,
                     date: new Date('2024-08-03')
                 },
                 {
-                    user: '626c8d7e4b5e6a7e4b5e6a7e',
-                    goal: '66bfb28da0e39b7a04adde1f',
+                    user: '66c1343d639debb5a60d3c92',
+                    goal: '66c1c21bf928121690ed9f72',
                     progressAmount: 22,
                     date: new Date('2024-08-05')
                 },
                 {
-                    user: '626c8d7e4b5e6a7e4b5e6a7e',
-                    goal: '66bfb28da0e39b7a04adde1f',
+                    user: '66c1343d639debb5a60d3c92',
+                    goal: '66c1c21bf928121690ed9f72',
                     progressAmount: 25,
                     date: new Date('2024-08-06')
                 },
                 {
-                    user: '626c8d7e4b5e6a7e4b5e6a7e',
-                    goal: '66bfb28da0e39b7a04adde1f',
+                    user: '66c1343d639debb5a60d3c92',
+                    goal: '66c1c21bf928121690ed9f72',
                     progressAmount: 29,
                     date: new Date('2024-08-08')
                 },

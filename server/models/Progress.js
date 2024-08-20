@@ -24,6 +24,6 @@ const ProgressSchema = new mongoose.Schema(
     { timestamps: true }
 );
 
-const Progress = mongoose.model('Progress', ProgressSchema);
+// const Progress = mongoose.model('Progress', ProgressSchema);
 
-export default Progress;
+export default ProgressSchema;

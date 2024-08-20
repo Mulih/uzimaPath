@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes.js';
 import goalRoutes from './routes/goalRoutes.js';
 import exerciseRoutes from './routes/exerciseRoutes.js';
 import progressRoutes from './routes/progressRoutes.js';
+import seedProgress from './seedFolder/trackProgress.js';
 
 
 
@@ -19,9 +20,17 @@ const PORT = process.env.PORT || 5000;
 
 
 const app = express();
+
+app.use((req, res, next) => {
+    console.log(req.path, req.method)
+    next()
+});
+
 app.use(cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 
 
 
@@ -45,23 +54,22 @@ app.use(express.urlencoded({ extended: true }));
 //
 
 connectMongoDB();
+seedProgress();
 
 
 
-app.use("/api/", authRoutes);
-app.use("/api/", goalRoutes);
-app.use("/api/", exerciseRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/goals", goalRoutes);
+app.use("/api/exercises", exerciseRoutes);
 
-app.use("/api/progress/", progressRoutes);
+app.use("/api/progress", progressRoutes);
 
 
 
 app.get("/", (req, res) => {
-    res.status(200).json({
-        message: 'UzimaPath app.'
-    });
+    res.status(200).json({ mssg: 'UzimaPath app.'});
 });
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 })
