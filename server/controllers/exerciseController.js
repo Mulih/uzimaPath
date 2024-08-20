@@ -1,4 +1,5 @@
 import Exercise from '../models/Exercise.js';
+import mongoose from 'mongoose';
 
 export const createExercise = async (req, res) => {
     const { user, title, type, sets, weight, duration, date } = req.body;
