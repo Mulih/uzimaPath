@@ -2,10 +2,10 @@ import Exercise from '../models/Exercise.js';
 import mongoose from 'mongoose';
 
 export const createExercise = async (req, res) => {
-    const { user, title, type, sets, weight, duration, date } = req.body;
+    const { title, type, sets, weight, duration } = req.body;
 
     try {
-        const exercise = await Exercise.create({ user, title, type, sets, weight, duration, date });
+        const exercise = await Exercise.create({ title, type, sets, weight, duration });
         res.status(200).json(exercise);
 
     } catch (error) {
