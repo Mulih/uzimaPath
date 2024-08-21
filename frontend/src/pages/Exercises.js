@@ -1,26 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { fetchExercises, createExercise } from '../services/api.js';
+
+import ExerciseDetails from '../components/ExerciseDetails.js';
+
 
   const Exercises = () =>  {
-    const [exercises, setExercises] = useState([]);
+    const [exercises, setExercises] = useState(null);
 
     useEffect(() => {
-        fetchExercises()
-            .then(response => setExercises(response.data))
-            .catch(console.error);
+        const fetchExercises = async () => {
+          try {
+            const response = await fetch('http://localhost:5000/api/exercises');
+            const json = await response.json();
+
+            if (response.ok) {
+              setExercises(json);
+            } else {
+              throw new Error(`HTTP error! status:, ${response.status}`);
+            }
+          } catch (error) {
+            console.error('Failed to fetch exercises:', error);
+          }
+        }
+
+        fetchExercises();
     }, []);
 
 	return (
-	  <div>
-        <h1>Exercises</h1>
-        <h2>List of exercises</h2>
-        <ul>
-            {exercises.map(exercise => (
-                <li key={exercise._id}>{exercise.title} : {exercise.type} - duration(min):{exercise.duration}</li>
-            ))}
-        </ul>
-        Form to log new exercise
-        Add more detailed exercise view here
+	  <div className='workouts'>
+      <div className='exercises'>
+        {exercises && exercises.map((exercise) => (
+          <ExerciseDetails key={exercise._id} exercise={exercise} />
+
+        ))}
+      </div>
+
 	  </div>
 	);
   }
