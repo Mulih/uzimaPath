@@ -31,7 +31,7 @@ const ExerciseSchema = new mongoose.Schema(
         },
         sets: {
             type: Number,
-            required: true
+
         },
         weight: {
             type: Number,
@@ -39,7 +39,7 @@ const ExerciseSchema = new mongoose.Schema(
         },
         duration: {
             type: Number,
-            required: true
+
         },
         date: {
             type: Date,
