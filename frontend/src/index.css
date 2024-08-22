@@ -28,10 +28,13 @@ header a {
   text-decoration: none;
 }
 
+
+
 .pages {
   max-width: 1400px;
   padding: 20px;
   margin: 0;
+
 }
 
 .exercise {
@@ -43,6 +46,7 @@ header a {
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: 100px;
+
 }
 
 .exercise-details {

@@ -1,0 +1,38 @@
+switch (action.type) {
+    case 'SET_EXERCISES':
+      return {
+        ...state,
+        exercises: action.payload,
+        loading: false,
+      };
+    case 'SET_EXERCISE':
+      return {
+        ...state,
+        exercise: action.payload,
+        loading: false,
+      };
+    case 'CREATE_EXERCISE':
+      return {
+        ...state,
+        exercises: [...state.exercises, action.payload],
+        loading: false,
+      };
+    case 'UPDATE_EXERCISE':
+      return {
+        ...state,
+        exercises: state.exercises.map((exercise) =>
+          exercise._id === action.payload._id ? action.payload : exercise
+        ),
+        loading: false,
+      };
+    case 'DELETE_EXERCISE':
+      return {
+        ...state,
+        exercises: state.exercises.filter(
+          (exercise) => exercise._id !== action.payload
+        ),
+        loading: false,
+      };
+    default:
+      return state;
+  }

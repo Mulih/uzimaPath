@@ -3,13 +3,14 @@ import { useState } from 'react';
   const ExerciseForm = () =>  {
     const [title, setTitle] = useState('');
     const [weight, setWeight] = useState('');
+    const [sets, setSet] = useState('');
     const [duration, setDuration] = useState('');
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
       e.preventDefault();
 
-      const exercise = { title, weight, duration };
+      const exercise = { title, weight, sets, duration };
 
       const response = await fetch('http://localhost:5000/api/exercises/', {
         method: 'POST',
@@ -26,6 +27,7 @@ import { useState } from 'react';
       if (response.ok) {
         setTitle('');
         setWeight('');
+        setSet('');
         setDuration('');
         setError(null);
         console.log('Exercise added:', data);
@@ -48,6 +50,13 @@ import { useState } from 'react';
             type='number'
             onChange={(e) => setWeight(e.target.value)}
             value={weight}
+
+        />
+        <label>Set: </label>
+        <input
+            type='number'
+            onChange={(e) => setSet(e.target.value)}
+            value={sets}
 
         />
         <label>Duration (min): </label>

@@ -5,6 +5,7 @@ import React from 'react';
 	  <div className='exercise-details'>
         <h4>{exercise.title}</h4>
         <p><strong>Weight (kg): </strong> {exercise.weight}</p>
+        <p><strong>Sets: </strong> {exercise.set}</p>
         <p><strong>Duration:</strong> {exercise.duration}</p>
         <p>{exercise.createdAt}</p>
 	  </div>

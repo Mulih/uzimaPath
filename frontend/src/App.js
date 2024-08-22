@@ -4,6 +4,7 @@ import Exercises from './pages/Exercises.js';
 import Goals from './pages/Goals.js';
 import Navbar from './components/Navbar.js';
 import Admin from './pages/Admin.js';
+
 function App() {
   return (
     <BrowserRouter>

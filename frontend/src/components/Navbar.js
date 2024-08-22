@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
             <Link to='/'>
                 <h1>Uzima Path</h1>
             </Link>
+
         </div>
       </header>
 	);
