@@ -1,26 +1,44 @@
 import React, { useState, useEffect } from 'react';
-import { fetchGoals } from '../services/api.js';
+
+import GoalDetails from '../components/GoalDetails.js';
 
 
-const Goals = () => {
-    const [goals, setGoals] = useState([]);
+
+
+  const Exercises = () =>  {
+    const [goals, setGoals] = useState(null);
 
     useEffect(() => {
-        fetchGoals()
-            .then(response => setGoals(response.data))
-            .catch(console.error);
+        const fetchGoals = async () => {
+          try {
+            const response = await fetch('http://localhost:5000/api/goals');
+            const data = await response.json();
+
+            if (response.ok) {
+              setGoals(data);
+            } else {
+              throw new Error(`HTTP error! status:, ${response.status}`);
+            }
+          } catch (error) {
+            console.error('Failed to fetch goals:', error);
+          }
+        }
+
+        fetchGoals();
     }, []);
 
-    return (
-        <div>
-            <h1>Goals</h1>
-            <ul>
-                {goals.map(goal => {
-                    <li key={goal._id}>{goal.title} - {goal.description}</li>
-                })}
-            </ul>
-        </div>
-    );
-};
+	return (
+	  <div className='workouts'>
+      <div className='goals'>
+        {goals && goals.map((goal) => (
+          <GoalDetails key={goal._id} goal={goal} />
+        ))}
+      </div>
 
-  export default Goals;
+
+
+	  </div>
+	);
+  }
+
+  export default Exercises;

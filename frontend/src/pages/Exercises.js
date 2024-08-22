@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import ExerciseDetails from '../components/ExerciseDetails.js';
+import ExerciseForm from '../components/ExerciseForm.js';
 
 
   const Exercises = () =>  {
@@ -10,10 +11,10 @@ import ExerciseDetails from '../components/ExerciseDetails.js';
         const fetchExercises = async () => {
           try {
             const response = await fetch('http://localhost:5000/api/exercises');
-            const json = await response.json();
+            const data = await response.json();
 
             if (response.ok) {
-              setExercises(json);
+              setExercises(data);
             } else {
               throw new Error(`HTTP error! status:, ${response.status}`);
             }
@@ -30,9 +31,10 @@ import ExerciseDetails from '../components/ExerciseDetails.js';
       <div className='exercises'>
         {exercises && exercises.map((exercise) => (
           <ExerciseDetails key={exercise._id} exercise={exercise} />
-
         ))}
       </div>
+
+      <ExerciseForm />
 
 	  </div>
 	);
