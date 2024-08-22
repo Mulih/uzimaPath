@@ -1,3 +1,10 @@
+/**
+ * The User model represents a user of the application.
+ * A user has a unique username and an email address.
+ * The user's password is stored securely using bcrypt.
+ * A user can have multiple goals and exercises.
+ * A user can have multiple progress entries.
+ */
 import mongoose from 'mongoose';
 
 
