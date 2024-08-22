@@ -1,3 +1,9 @@
+/**
+ * This file defines the routes for the exercises resource.
+ * It uses the Express.js framework to define routes that
+ * handle the standard CRUD operations for exercises.
+ */
+
 import express from 'express';
 import { createExercise, getExercise, getExercises, updateExercise, deleteExercise } from '../controllers/exerciseController.js';
 

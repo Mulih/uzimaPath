@@ -1,41 +1,46 @@
 import { useState } from 'react';
+import { useExercisesContext } from '../Hooks/useExercisesContext.js';
 
-  const ExerciseForm = () =>  {
-    const [title, setTitle] = useState('');
-    const [weight, setWeight] = useState('');
-    const [sets, setSet] = useState('');
-    const [duration, setDuration] = useState('');
-    const [error, setError] = useState(null);
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
+const ExerciseForm = () =>  {
+  const { dispatch } = useExercisesContext();
 
-      const exercise = { title, weight, sets, duration };
+  const [title, setTitle] = useState('');
+  const [weight, setWeight] = useState('');
+  const [sets, setSet] = useState('');
+  const [duration, setDuration] = useState('');
+  const [error, setError] = useState(null);
 
-      const response = await fetch('http://localhost:5000/api/exercises/', {
-        method: 'POST',
-        body: JSON.stringify(exercise),
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      const data = await response.json();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      if (!response.ok) {
-        setError(data.error);
+    const exercise = { title, weight, sets, duration };
+
+    const response = await fetch('http://localhost:5000/api/exercises/', {
+      method: 'POST',
+      body: JSON.stringify(exercise),
+      headers: {
+        'Content-Type': 'application/json',
       }
-      if (response.ok) {
-        setTitle('');
-        setWeight('');
-        setSet('');
-        setDuration('');
-        setError(null);
-        console.log('Exercise added:', data);
-      }
+    })
+    const data = await response.json();
+
+    if (!response.ok) {
+      setError(data.error);
     }
+    if (response.ok) {
+      setError(null);
+      setTitle('');
+      setWeight('');
+      setSet('');
+      setDuration('');
+      dispatch({ type: 'CREATE_EXERCISE', payload: data });
+      console.log('Exercise added:', data);
+    }
+  }
 
-	return (
-	  <form className='create-form' onSubmit={handleSubmit}>
+  return (
+    <form className='create-form' onSubmit={handleSubmit}>
         <h3>Add an exercise</h3>
 
         <label>Exercise title: </label>
@@ -45,18 +50,20 @@ import { useState } from 'react';
             value={title}
 
         />
-        <label>Weight (kg): </label>
+        <label>Weight (in kg): </label>
         <input
             type='number'
             onChange={(e) => setWeight(e.target.value)}
             value={weight}
+            required
 
         />
-        <label>Set: </label>
+        <label>Sets: </label>
         <input
             type='number'
             onChange={(e) => setSet(e.target.value)}
             value={sets}
+            required
 
         />
         <label>Duration (min): </label>
@@ -64,14 +71,15 @@ import { useState } from 'react';
             type='number'
             onChange={(e) => setDuration(e.target.value)}
             value={duration}
+            required
 
         />
 
         <button>Add Exercise</button>
-        {error && <div className='error'>{error}</div>}
+        {error && <div className='error'>Please fill in all the required fields</div>}
       </form>
 
-	);
-  }
+  );
+}
 
-  export default ExerciseForm;
+export default ExerciseForm;

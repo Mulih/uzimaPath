@@ -1,30 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
+import { useExercisesContext } from '../Hooks/useExercisesContext.js';
 
 import ExerciseDetails from '../components/ExerciseDetails.js';
 import ExerciseForm from '../components/ExerciseForm.js';
 
 
   const Exercises = () =>  {
-    const [exercises, setExercises] = useState(null);
+    const { exercises, dispatch } = useExercisesContext();
 
     useEffect(() => {
         const fetchExercises = async () => {
-          try {
             const response = await fetch('http://localhost:5000/api/exercises');
             const data = await response.json();
 
             if (response.ok) {
-              setExercises(data);
-            } else {
-              throw new Error(`HTTP error! status:, ${response.status}`);
+              dispatch({ type: 'SET_EXERCISES', payload: data });
             }
-          } catch (error) {
-            console.error('Failed to fetch exercises:', error);
-          }
         }
 
         fetchExercises();
-    }, []);
+    }, [dispatch]);
 
 	return (
 	  <div className='workouts'>
@@ -33,7 +28,6 @@ import ExerciseForm from '../components/ExerciseForm.js';
           <ExerciseDetails key={exercise._id} exercise={exercise} />
         ))}
       </div>
-
       <ExerciseForm />
 
 	  </div>
