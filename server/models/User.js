@@ -7,6 +7,7 @@
  */
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import validator from 'validator';
 
 
 const userSchema = new mongoose.Schema(
@@ -27,6 +28,18 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.statics.signup = async function(email, password) {
+
+    if (!email || !password) {
+        throw Error('All fields must be filled.');
+    }
+
+    if (!validator.isEmail(email)) {
+        throw Error('Email not valid.');
+    }
+    if (!validator.isStrongPassword(password)) {
+        throw Error('Password not strong enough.');
+    }
+
     console.log('User signup called with email:', email, 'and password:', password);
 
     const exists = await this.findOne({ email });
