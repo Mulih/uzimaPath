@@ -6,15 +6,11 @@
  * A user can have multiple progress entries.
  */
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 
 const userSchema = new mongoose.Schema(
     {
-        username: {
-        type: String,
-        required: true,
-        unique: true,
-        },
         email: {
         type: String,
         required: true,
@@ -26,18 +22,25 @@ const userSchema = new mongoose.Schema(
         required: true,
         minlength: 8,
         },
-        age: {
-        type: Number,
-        default: null,
-        },
-        isAdmin: {
-            type: Boolean,
-            default: false,
-        }
     },
     { timestamps: true }
 );
 
-const User = mongoose.model('user', userSchema);
+userSchema.statics.signup = async function(email, password) {
+    console.log('User signup called with email:', email, 'and password:', password);
+
+    const exists = await this.findOne({ email });
+    if (exists) {
+        throw Error('Email already in use.');
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt);
+
+    const user = await this.create({ email, password: hash });
+    return user;
+}
+
+const User = mongoose.model('User', userSchema);
 
 export default User;
