@@ -154,12 +154,17 @@ export const updateExercise = async (req, res) => {
  * @return {Promise<void>} - This function does not return anything. Instead, it sends a response back to the client.
  */
 export const deleteExercise = async (req, res) => {
+    console.log('deleteExercise called with req:', req);
+
     // Extract the 'id' parameter from the request parameters.
     const { id } = req.params;
+
+    console.log('Request to delete exercise with id:', id);
 
     // Check if the provided 'id' is a valid MongoDB ObjectId.
     // If it is not a valid ObjectId, return a 404 status code with an error message.
     if (!mongoose.Types.ObjectId.isValid(id)) {
+        console.log('Invalid ObjectId provided');
         return res.status(404).json({ error: 'No such Exercise exists' });
     }
 
@@ -167,17 +172,22 @@ export const deleteExercise = async (req, res) => {
         // Attempt to find and delete an exercise from the database based on the provided 'id'.
         // The findByIdAndDelete method takes an object with an '_id' property, which is set to the provided 'id'.
         // It returns the deleted exercise if it exists, or null if it does not.
-        const deletedExercise = await Exercise.findByIdAndDelete({_id: id});
+        const exercise = await Exercise.findByIdAndDelete({_id: id});
+
+        console.log('Exercise to delete:', exercise);
 
         // Check if the exercise was found and deleted.
         // If it was not found, return a 404 status code with an error message.
-        if (!deletedExercise) {
+        if (!exercise) {
+            console.log('Exercise not found');
             return res.status(404).json({ error: 'Exercise not found.' });
         }
 
         // If the exercise was found and deleted, return a 200 status code with a success message.
-        res.status(200).json({ message: 'Exercise deleted successfully!' });
+        console.log('Exercise successfully deleted');
+        res.status(200).json(exercise);
     } catch (error) {
+        console.log('Error while deleting exercise:', error);
         // If an error occurred while deleting the exercise, return a 500 status code with an error message.
         res.status(500).json({ error: 'Something went wrong!' });
     }

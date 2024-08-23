@@ -13,6 +13,6 @@ router.post('/', createExercise);
 router.get('/', getExercises);
 router.get('/:id', getExercise);
 router.put('/:id', updateExercise);
-router.post('/:id', deleteExercise);
+router.delete('/:id', deleteExercise);
 
 export default router;
