@@ -7,6 +7,16 @@ import { Link } from 'react-router-dom';
             <Link to='/'>
                 <h1>Uzima Path</h1>
             </Link>
+            <nav>
+              <div>
+                <Link to='/signup'>
+                  Signup
+                </Link>
+                <Link to='/login'>
+                  Login
+                </Link>
+              </div>
+            </nav>
 
         </div>
       </header>
