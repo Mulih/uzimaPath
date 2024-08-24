@@ -3,13 +3,13 @@ import axios from 'axios';
 const API_BASE_URL = 'http://localhost:5000';
 
 //Authentication
-export const register = async (userData) => {
-    const response = await axios.post(`${API_BASE_URL}/api/register`, userData);
+export const signup = async (userData) => {
+    const response = await axios.post(`${API_BASE_URL}/api/user/signup`, userData);
     return response.data;
 };
 
 export const login = async (userData) => {
-    const response = await axios.post(`${API_BASE_URL}/api/login`, userData);
+    const response = await axios.post(`${API_BASE_URL}/api/user/login`, userData);
     return response.data;
 };
 

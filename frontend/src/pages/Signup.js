@@ -32,7 +32,7 @@ import { UseSignup } from '../Hooks/useSignup.js';
           value={password}
         />
 
-        <button disabled={isLoading}>Sign up</button>
+        <button disabled={isLoading} className='btn btn-primary btn-dark btn-lg px-4 me-md-2'>Sign up</button>
         {error && <div className="error">{error}</div>}
       </form>
 	);

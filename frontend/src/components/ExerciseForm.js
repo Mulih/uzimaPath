@@ -75,7 +75,7 @@ const ExerciseForm = () =>  {
 
         />
 
-        <button>Add Exercise</button>
+        <button className='btn btn-primary btn-dark btn-lg px-4 me-md-2'>Add Exercise</button>
         {error && <div className='error'>Please fill in all the required fields</div>}
       </form>
 

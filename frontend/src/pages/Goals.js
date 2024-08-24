@@ -5,7 +5,7 @@ import GoalDetails from '../components/GoalDetails.js';
 
 
 
-  const Exercises = () =>  {
+  const Goals = () =>  {
     const [goals, setGoals] = useState(null);
 
     useEffect(() => {
@@ -41,4 +41,4 @@ import GoalDetails from '../components/GoalDetails.js';
 	);
   }
 
-  export default Exercises;
+  export default Goals;

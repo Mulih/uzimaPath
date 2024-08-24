@@ -35,7 +35,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 // Middleware function to log the request path and method before handling the request
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
     console.log(req.path, req.method)
     next()
 });
@@ -50,7 +50,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Mounting the authentication routes at /api/auth
-app.use("/api/auth", authRoutes);
+app.use("/api/user", authRoutes);
 
 // Mounting the goal routes at /api/goals
 app.use("/api/goals", goalRoutes);

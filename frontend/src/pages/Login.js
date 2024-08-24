@@ -12,7 +12,7 @@ import { useState} from 'react';
     }
 
 	return (
-	  <form className="Login" onSubmit={handleSubmit}>
+	  <form className="login" onSubmit={handleSubmit}>
 
         <h3>Login</h3>
 
@@ -29,7 +29,7 @@ import { useState} from 'react';
           value={password}
         />
 
-        <button>Login</button>
+        <button className='btn btn-primary btn-dark btn-lg px-4 me-md-2'>Login</button>
       </form>
 	);
   }
