@@ -17,17 +17,17 @@ const About = () => {
         <ul>
           <li>
             <img src="https://via.placeholder.com/150" alt="Team Member 1" />
-            <h3>John Doe</h3>
+            <h3>Alvin Muli</h3>
             <p>Co-founder & CEO</p>
           </li>
           <li>
             <img src="https://via.placeholder.com/150" alt="Team Member 2" />
-            <h3>Jane Smith</h3>
+            <h3>Muli Kyalo</h3>
             <p>CTO & Co-founder</p>
           </li>
           <li>
             <img src="https://via.placeholder.com/150" alt="Team Member 3" />
-            <h3>Bob Johnson</h3>
+            <h3>Alvin Kyalo</h3>
             <p>Product Manager</p>
           </li>
         </ul>
@@ -37,12 +37,12 @@ const About = () => {
         <h2>What Our Users Say</h2>
         <blockquote>
           <p>"UzimaPath has helped me reach my fitness goals faster than ever before!"</p>
-          <cite>— Sarah K., Happy User</cite>
+          <cite>— Jane Kang'ethe., Happy User</cite>
         </blockquote>
       </div>
 
       <footer className="about-footer">
-        <p>&copy; 2023 UzimaPath. All rights reserved.</p>
+        <p>&copy; 2024 UzimaPath. All rights reserved.</p>
       </footer>
     </section>
   );
