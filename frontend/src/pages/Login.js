@@ -32,7 +32,7 @@ import { Link } from 'react-router-dom';
 
         <button className='btn btn-primary btn-dark btn-lg px-4 me-md-2'>Login</button>
         <div>
-            Don't have an account?Sign up today <Link to="/login">here</Link>
+            Don't have an account?Sign up today <Link to="/signup">here</Link>
         </div>
       </form>
 	);
