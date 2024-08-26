@@ -30,12 +30,14 @@ export const createExercise = async (req, res) => {
 
     try {
         // Create a new exercise document in the database
+        const user_id = req.user._id;
         const exercise = await Exercise.create({
             title,
             type,
             sets,
             weight,
-            duration
+            duration,
+            user_id,
         });
 
         // If the exercise was created successfully, send it back to the client in JSON format
@@ -56,10 +58,11 @@ export const createExercise = async (req, res) => {
  */
 export const getExercises = async (req, res) => {
     try {
+        const user_id = req.user._id;
         // Retrieve all documents from the Exercise collection in the database.
         // The sort method is used to sort the documents by the "createdAt" field in descending order.
         // This means that the most recently created exercises will be returned first.
-        const exercises = await Exercise.find({ }).sort({createdAt: -1});
+        const exercises = await Exercise.find({user_id}).sort({createdAt: -1});
 
         // Set the HTTP status code to 200 (success) and send the retrieved exercises back to the client
         // in JSON format.
@@ -79,17 +82,17 @@ export const getExercises = async (req, res) => {
  */
 export const getExercise = async (req, res) => {
     // Extract the ID parameter from the request URL
-    const { id } = req.params;
+    const { user_id } = req.params;
 
     // Check if the provided ID is a valid MongoDB ObjectId
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(user_id)) {
         // If the ID is invalid, return a 404 status code with an error message
         return res.status(404).json({ error: 'No such Exercise exists' });
     }
 
     try {
         // Attempt to find an exercise in the database with the provided ID
-        const exercise = await Exercise.findById(id);
+        const exercise = await Exercise.findById(user_id);
 
         // Check if the exercise was found
         if (!exercise) {

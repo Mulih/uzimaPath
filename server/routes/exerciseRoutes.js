@@ -12,7 +12,7 @@
  */
 
 import express from 'express';
-import { createExercise, getExercise, getExercises, updateExercise, deleteExercise } from '../controllers/exerciseController.js';
+import { createExercise, getExercises, updateExercise, deleteExercise } from '../controllers/exerciseController.js';
 import { requireAuth } from '../middleware/requireAuth.js';
 
 const router = express.Router();
@@ -26,8 +26,8 @@ router.post('/', createExercise);
 // Retrieve a list of all exercises
 router.get('/', getExercises);
 
-// Retrieve a single exercise by its ID
-router.get('/:id', getExercise);
+// // Retrieve a single exercise by its ID
+// router.get('/:id', getExercise);
 
 // Update an existing exercise
 router.put('/:id', updateExercise);

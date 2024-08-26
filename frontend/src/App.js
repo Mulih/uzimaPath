@@ -20,21 +20,20 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <div className="pages">
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/signup" element={!user ? <Signup />: <Navigate to="/exercises" />} />
-            <Route path="/login" element={!user ? <Login />: <Navigate to="/Home" />} />
-            <Route path="/Home" element={user ? <Home />: <Navigate to="/login" />} />
-            <Route path="/exercises" element={<Exercises />} />
-            <Route path="/goals" element={<Goals />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<h1>Not Found</h1>} />
-          </Routes>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/signup" element={!user ?  <Signup />:  <Navigate to="/Home" />} />
+          <Route path="/login" element={!user ? <Login /> :  <Navigate to="/exercises" />} />
+          <Route path="/Home" element={user ? <Home /> : <Navigate to="/exercises" />} />
+          <Route path="/exercises" element={user ? <Exercises /> : <Navigate to="/exercises" />} />
+          <Route path="/goals" element={user ? <Goals /> : <Navigate to="/login" />} />
+          <Route path="/admin" element={user && user.isAdmin ? <Admin /> : <Navigate to="/login" />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<h1>Not Found</h1>} />
+        </Routes>
       </div>
     </BrowserRouter>
-
   );
 }
 

@@ -16,10 +16,6 @@ import mongoose from 'mongoose';
 
 const ExerciseSchema = new mongoose.Schema(
     {
-        user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
-        },
         title: {
             type: String,
             required: true
@@ -44,6 +40,10 @@ const ExerciseSchema = new mongoose.Schema(
         date: {
             type: Date,
             default: Date.now
+        },
+        user_id: {
+            type: String,
+            required: true,
         },
     },
     { timestamps: true }

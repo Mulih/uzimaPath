@@ -28,25 +28,23 @@ import { useAuthContext } from '../Hooks/useAuthContext.js';
               <h1>Path</h1>
             </Link>
           </div>
-          <div className='links'>
-            {!user && (
-                  <div className='links'>
-                    <Link to='/About'>About</Link>
-                    <Link to='/Contact'>Contact</Link>
-                  </div>
+          <nav>
+            {user && (
+              <div>
+                <span>{user ? user.email: ''}</span>
+                <button onClick={handleClick}>Log out</button>
+              </div>
             )}
-          </div>
-          {user &&(
-            <nav className='button'>
-              {user && (
-                <div>
-                  <span>{user ? user.email: ''}</span>
 
-                  <button onClick={handleClick}>Log out</button>
-                </div>
-              )}
-            </nav>
-          )}
+
+            {!user && (
+              <div className='links'>
+                <Link to='/About'>About</Link>
+                <Link to='/Contact'>Contact</Link>
+              </div>
+            )}
+
+          </nav>
         </div>
       </header>
     );

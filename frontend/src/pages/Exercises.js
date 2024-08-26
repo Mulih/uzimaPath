@@ -41,6 +41,6 @@ import ExerciseForm from '../components/ExerciseForm.js';
 
 	  </div>
 	);
-  }
+};
 
-  export default Exercises;
+export default Exercises;

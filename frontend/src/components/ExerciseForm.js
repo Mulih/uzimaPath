@@ -18,7 +18,7 @@ const ExerciseForm = () =>  {
 
     if (!user) {
       setError('You must be logged in')
-      return
+      return;
     }
 
     const exercise = { title, weight, sets, duration };

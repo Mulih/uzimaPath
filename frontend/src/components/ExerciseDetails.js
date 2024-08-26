@@ -10,11 +10,12 @@ const ExerciseDetails = ({ exercise }) =>  {
 
   const handleClick = async () => {
     if (!user) {
+      console.log('You must be logged in');
       return;
     }
     const response = await fetch('http://localhost:5000/api/exercises/' + exercise._id, {
       method: 'DELETE',
-      header: {
+      headers: {
         'Authorization': `Bearer ${user.token}`
       }
     });
