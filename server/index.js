@@ -20,7 +20,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectMongoDB from './utils/db.js';
-import authRoutes from './routes/authRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import goalRoutes from './routes/goalRoutes.js';
 import exerciseRoutes from './routes/exerciseRoutes.js';
 import progressRoutes from './routes/progressRoutes.js';
@@ -50,7 +50,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Mounting the authentication routes at /api/auth
-app.use("/api/user", authRoutes);
+app.use("/api/user", userRoutes);
 
 // Mounting the goal routes at /api/goals
 app.use("/api/goals", goalRoutes);

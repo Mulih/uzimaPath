@@ -12,7 +12,7 @@
  * of the module.
  */
 import express from 'express';
-import { signupUser, loginUser } from '../controllers/authController.js';
+import { signupUser, loginUser } from '../controllers/userController.js';
 const router = express.Router();
 
 /**

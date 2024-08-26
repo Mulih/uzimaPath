@@ -1,16 +1,23 @@
 import {  useEffect } from 'react';
 import { useExercisesContext } from '../Hooks/useExercisesContext.js';
+import { useAuthContext } from '../Hooks/useAuthContext.js';
 
+//components
 import ExerciseDetails from '../components/ExerciseDetails.js';
 import ExerciseForm from '../components/ExerciseForm.js';
 
 
   const Exercises = () =>  {
     const { exercises, dispatch } = useExercisesContext();
+    const { user } = useAuthContext();
 
     useEffect(() => {
         const fetchExercises = async () => {
-            const response = await fetch('http://localhost:5000/api/exercises');
+            const response = await fetch('http://localhost:5000/api/exercises', {
+              headers: {
+                'Authorization': `Bearer ${user.token}`
+              }
+            });
             const data = await response.json();
 
             if (response.ok) {
@@ -18,8 +25,10 @@ import ExerciseForm from '../components/ExerciseForm.js';
             }
         }
 
-        fetchExercises();
-    }, [dispatch]);
+        if (user) {
+          fetchExercises();
+        }
+    }, [dispatch, user]);
 
 	return (
 	  <div className='workouts'>

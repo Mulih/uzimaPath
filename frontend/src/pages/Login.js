@@ -1,21 +1,23 @@
 import { useState} from 'react';
+import { useLogin } from '../Hooks/useLogin.js';
 import { Link } from 'react-router-dom';
 
-  const Login = () =>  {
+const Login = () =>  {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login, isLoading, error } = useLogin();
 
-    const  handleSubmit = async (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+      e.preventDefault();
 
-        console.log('Login form submitted with:', email, password);
-    }
+      await login(email, password);
+  };
 
-	return (
-	  <form className="login" onSubmit={handleSubmit}>
+  return (
+    <form className="login" onSubmit={handleSubmit}>
 
-        <h3>Login</h3>
+        <h3>Log in</h3>
 
         <label>Email:</label>
         <input
@@ -30,12 +32,13 @@ import { Link } from 'react-router-dom';
           value={password}
         />
 
-        <button className='btn btn-primary btn-dark btn-lg px-4 me-md-2'>Login</button>
+        <button disabled={isLoading} className='btn btn-primary btn-dark btn-lg px-4 me-md-2'>Log in</button>
+        {error && <div className="error">{error}</div>}
         <div>
             Don't have an account?Sign up today <Link to="/signup">here</Link>
         </div>
       </form>
-	);
-  }
+  );
+};
 
-  export default Login;
+export default Login;

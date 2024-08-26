@@ -13,8 +13,12 @@
 
 import express from 'express';
 import { createExercise, getExercise, getExercises, updateExercise, deleteExercise } from '../controllers/exerciseController.js';
+import { requireAuth } from '../middleware/requireAuth.js';
 
 const router = express.Router();
+
+// Require authentication for all routes
+router.use(requireAuth);
 
 // Create a new exercise
 router.post('/', createExercise);

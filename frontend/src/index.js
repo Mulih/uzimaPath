@@ -14,6 +14,6 @@ root.render(
       <ExercisesContextProvider>
         <App />
       </ExercisesContextProvider>
-     </AuthContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );

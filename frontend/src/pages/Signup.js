@@ -1,45 +1,45 @@
-import { useState} from 'react';
-import { UseSignup } from '../Hooks/useSignup.js';
+import { useState } from 'react';
+import { useSignup } from '../Hooks/useSignup.js';
 import { Link } from 'react-router-dom';
 
-  const Signup = () =>  {
+const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { signup, isLoading, error } = useSignup();
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const { signup, error, isLoading } = UseSignup();
+    await signup(email, password);
+  };
 
-    const  handleSubmit = async (e) => {
-        e.preventDefault();
 
-        await signup(email, password);
-    }
+  return (
+    <form className="signup" onSubmit={handleSubmit}>
 
-	return (
-	  <form className="signup" onSubmit={handleSubmit}>
+      <h3>Sign up</h3>
 
-        <h3>Sign up</h3>
+      <label>Email:</label>
+      <input
+        type="email"
+        onChange={(e) => setEmail(e.target.value)}
+        value={email}
+      />
+      <label>Password:</label>
+      <input
+        type="Password"
+        onChange={(e) => setPassword(e.target.value)}
+        value={password}
+      />
 
-        <label>Email:</label>
-        <input
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <label>Password:</label>
-        <input
-          type="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
+      <button disabled={isLoading} className='btn btn-primary btn-dark btn-lg px-4 me-md-2'>Sign up</button>
+      {error && <div className="error">{error}</div>}
+      <div>
+        Already have an account?Log in <Link to="/login">here</Link>
+      </div>
+    </form>
+  );
 
-        <button disabled={isLoading} className='btn btn-primary btn-dark btn-lg px-4 me-md-2'>Sign up</button>
-        {error && <div className="error">{error}</div>}
-        <div>
-            Already have an account? <Link to="/login">Login</Link>
-        </div>
-      </form>
-	);
-  }
+};
 
-  export default Signup;
+export default Signup
