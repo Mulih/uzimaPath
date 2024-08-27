@@ -1,31 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useGoalsContext } from '../Hooks/useGoalsContext.js';
+import { useAuthContext } from '../Hooks/useAuthContext.js';
 
 import GoalDetails from '../components/GoalDetails.js';
+import GoalForm from '../components/GoalForm.js';
 
 
 
 
-  const Goals = () =>  {
-    const [goals, setGoals] = useState(null);
+const Goals = () =>  {
+    const { goals, dispatch } = useGoalsContext();
+    const { user } = useAuthContext();
+
 
     useEffect(() => {
-        const fetchGoals = async () => {
-          try {
-            const response = await fetch('http://localhost:5000/api/goals');
-            const data = await response.json();
+      const fetchGoals = async () => {
 
-            if (response.ok) {
-              setGoals(data);
-            } else {
-              throw new Error(`HTTP error! status:, ${response.status}`);
-            }
-          } catch (error) {
-            console.error('Failed to fetch goals:', error);
+        const response = await fetch('http://localhost:5000/api/goals', {
+          headers: {
+            'Authorization': `Bearer ${user.token}`
           }
-        }
+        });
+        const data = await response.json();
 
+        if (response.ok) {
+          dispatch({ type: 'SET_GOALS', payload: data });
+        }
+      }
+      if (user) {
         fetchGoals();
-    }, []);
+      }
+  }, [dispatch, user]);
 
 	return (
 	  <div className='workouts'>
@@ -34,9 +39,7 @@ import GoalDetails from '../components/GoalDetails.js';
           <GoalDetails key={goal._id} goal={goal} />
         ))}
       </div>
-
-
-
+      <GoalForm />
 	  </div>
 	);
   }

@@ -15,10 +15,6 @@ import mongoose from 'mongoose';
 
 const GoalSchema = new mongoose.Schema(
     {
-        username: {
-            type: String,
-            required: true
-        },
         title: {
             type: String,
             required: true
@@ -34,18 +30,29 @@ const GoalSchema = new mongoose.Schema(
         target: {
             type: String,
         },
-        frequency: {
-            type: String,
-        },
         start_date: {
             type: Date,
+            required: true
         },
-        end_date: {
-            type: Date
+        user_id: {
+            type: String,
+            required: true,
         },
-        UserId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     },
+    { timestamps: true }
 )
+
+GoalSchema.methods.updateProgress = async function(date) {
+    const index = this.progress.findIndex(p => p.getTime() === date.getTime());
+
+    if (index === -1) {
+        this.progress.push(new Date(date));
+        await this.save();
+    } else {
+        this.progress[index] = new Date(date);
+        await this.save();
+    }
+};
 
 const Goal = mongoose.model('Goal', GoalSchema);
 

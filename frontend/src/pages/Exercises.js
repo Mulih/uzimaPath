@@ -7,7 +7,7 @@ import ExerciseDetails from '../components/ExerciseDetails.js';
 import ExerciseForm from '../components/ExerciseForm.js';
 
 
-  const Exercises = () =>  {
+const Exercises = () =>  {
     const { exercises, dispatch } = useExercisesContext();
     const { user } = useAuthContext();
 
