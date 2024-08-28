@@ -54,7 +54,9 @@ const Dashboard = () => {
         <div className="recent-goal">
           <h4>Recent Goal</h4>
           {goals && goals.length > 0 ? (
-            <p>{goals[0].title}</p>
+            goals.slice(0, 3).map((goal, index) => (
+              <p key={index}>{goal.title}</p>
+            ))
           ) : (
             <p>No goals yet</p>
           )}
@@ -63,7 +65,9 @@ const Dashboard = () => {
         <div className="recent-exercise">
           <h4>Recent Exercise</h4>
           {exercises && exercises.length > 0 ? (
-            <p>{exercises[0].title}</p>
+            exercises.slice(0, 3).map((exercise, index) => (
+              <p key={index}>{exercise.title}</p>
+            ))
           ) : (
             <p>No exercises yet</p>
           )}
