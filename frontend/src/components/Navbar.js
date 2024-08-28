@@ -31,6 +31,7 @@ import { useAuthContext } from '../Hooks/useAuthContext.js';
               <nav className='user-links'>
                 {user && (
                     <div>
+                      <Link to={"/Home"}>Home</Link>
                       <Link to="/dashboard">Dashboard</Link>
                       <Link to="/exercises">Exercises</Link>
                       <Link to="/goals">Goals</Link>
@@ -43,7 +44,7 @@ import { useAuthContext } from '../Hooks/useAuthContext.js';
           <nav>
             {user && (
               <div className='user-details'>
-                {/* <span>{user ? user.email: ''}</span> */}
+                <span className='email'>{user ? user.email: ''}</span>
                 <button onClick={handleClick}>Log out</button>
               </div>
             )}

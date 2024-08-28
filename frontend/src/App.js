@@ -12,6 +12,7 @@ import About from './pages/About.js';
 import Contact from './pages/Contact.js';
 import Dashboard from './pages/Dashboard.js';
 import ExerciseBrowse from './components/ExerciseBrowse.js';
+import Home from './pages/Home.js';
 
 
 function App() {
@@ -22,18 +23,22 @@ function App() {
       <Navbar />
       <div className="pages">
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={user ? <Navigate to='/Home' /> : <LandingPage />} />
           <Route
             path="/signup"
-            element={user ?  <Navigate to="/dashboard" />: <Signup /> }
+            element={user ?  <Navigate to="/Home" />: <Signup /> }
           />
           <Route
             path="/login"
-            element={user ? <Navigate to="/dashboard" /> : <Login /> }
+            element={user ? <Navigate to="/Home" /> : <Login /> }
           />
           <Route
             path="/dashboard"
             element={user ? <Dashboard /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/Home"
+            element={user ? <Home /> : <Navigate to="/login" />}
           />
           <Route
             path="/exercises"

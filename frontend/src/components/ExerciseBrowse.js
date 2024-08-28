@@ -12,7 +12,7 @@ const ExerciseBrowse = () => {
   const { user } = useAuthContext();
 
   useEffect(() => {
-    fetch(`https://api.sebhulse.com/v1/filter/?type=${category}&level=beginner&area=full`, {
+    fetch('https://api.sebhulse.com/v1/filter', {
         withCredentials: true,
         method: 'GET',
         headers: {

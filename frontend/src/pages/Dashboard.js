@@ -66,7 +66,7 @@ const Dashboard = () => {
           <h4>Recent Exercise</h4>
           {exercises && exercises.length > 0 ? (
             exercises.slice(0, 3).map((exercise, index) => (
-              <p key={index}>{exercise.title}</p>
+              <p>{exercises[0].title}</p>
             ))
           ) : (
             <p>No exercises yet</p>
