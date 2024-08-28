@@ -72,4 +72,5 @@ const startServer = () => {
     })
 }
 
+// Starting the server
 startServer();

@@ -26,8 +26,8 @@ router.post('/', createExercise);
 // Retrieve a list of all exercises
 router.get('/', getExercises);
 
-// // Retrieve a single exercise by its ID
-// router.get('/:id', getExercise);
+// Retrieve a single exercise by its ID
+router.get('/:id', getExercise);
 
 // Update an existing exercise
 router.put('/:id', updateExercise);
