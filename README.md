@@ -50,22 +50,25 @@ How to Use
     npm start
     By default, the application will be available at http://localhost:3000.
 2. Features
-- Exercise Logging: Track various exercises, including details such as type, duration, and intensity.
-- Goal Setting: Create and manage fitness goals with specific targets and deadlines.
-- Progress Tracking: View progress through charts and statistics.
-- User Management: Admin interface for managing user accounts and permissions.
+   
+  - Exercise Logging: Track various exercises, including details such as type, duration, and intensity.
+  - Goal Setting: Create and manage fitness goals with specific targets and deadlines.
+  - Progress Tracking: View progress through charts and statistics.
+  - User Management: Admin interface for managing user accounts and permissions.
 
 3. Testing the Application
-To ensure the integrity of the application, run the test suite using:
-npm test
+   To ensure the integrity of the application, run the test suite using:
+   npm test
 
-4. Deployment
+5. Deployment
+   
     1. Build for Production
        npm run build
     2. Deploy to Your Hosting Provider
-    Follow the deployment instructions specific to your hosting     provider, ensuring that environment variables are correctly configured.
+    Follow the deployment instructions specific to your hosting provider, ensuring that environment variables are correctly configured.
 
 Contributing
+
     1. Fork the Repository
 
     Create your own fork on GitHub and clone it to your local machine.
