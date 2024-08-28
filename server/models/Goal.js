@@ -42,14 +42,29 @@ const GoalSchema = new mongoose.Schema(
     { timestamps: true }
 )
 
+// Define a method on the Goal model that updates the progress of a goal.
+// This method takes a date argument and checks if the progress array already contains a progress entry for that date.
+// If it does, it updates the existing progress entry with the new date.
+// If it doesn't, it adds a new progress entry to the array and saves the goal to the database.
 GoalSchema.methods.updateProgress = async function(date) {
+    // Find the index of the progress entry in the array that matches the given date.
+    // Use the findIndex method to iterate over the array and return the index of the first element that satisfies the provided testing function.
     const index = this.progress.findIndex(p => p.getTime() === date.getTime());
 
+    // Check if the progress array does not contain a progress entry for the given date.
+    // If it does not, add a new progress entry to the array and save the goal to the database.
     if (index === -1) {
+        // Create a new Date object from the given date argument and add it to the progress array.
         this.progress.push(new Date(date));
+        // Save the goal to the database using the save method provided by Mongoose.
         await this.save();
-    } else {
+    }
+    // If the progress array already contains a progress entry for the given date,
+    // update the existing progress entry with the new date and save the goal to the database.
+    else {
+        // Replace the progress entry at the given index with a new Date object created from the given date argument.
         this.progress[index] = new Date(date);
+        // Save the goal to the database using the save method provided by Mongoose.
         await this.save();
     }
 };
