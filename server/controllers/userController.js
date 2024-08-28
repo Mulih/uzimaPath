@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs/dist/bcrypt.js';
 import User from '../models/User.js';
 import jwt from 'jsonwebtoken';
 
@@ -39,4 +40,25 @@ const loginUser = async (req, res) => {
     }
 };
 
-export { signupUser, loginUser };
+const updateUserPassword = async (req, res) => {
+    const { currentPassword, newPassword } = req.body;
+    const { _id } = req.user;
+    try {
+        const user = await User.findById(_id);
+        const match = await bcrypt.compare(currentPassword, user.password);
+
+        if (!match) {
+            return res.status(400).json({ error: 'Passwords do not match.' });
+        }
+
+        const hash = await bcrypt.hash(newPassword, 10);
+        user.password = hash;
+        await user.save();
+
+        res.status(200).json({ message: 'Password updated successfully.' });
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+};
+
+export { signupUser, loginUser, updateUserPassword };
