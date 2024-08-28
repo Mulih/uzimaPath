@@ -32,10 +32,18 @@ const Exercises = () =>  {
 
 	return (
 	  <div className='workouts'>
-      <div className='exercises'>
-        {exercises && exercises.map((exercise) => (
-          <ExerciseDetails key={exercise._id} exercise={exercise} />
-        ))}
+      <div className='pb-4 pt-4'>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Exercises</li>
+          </ol>
+        </nav>
+        <div className='exercises row'>
+          {exercises && exercises.map((exercise) => (
+            <ExerciseDetails key={exercise._id} exercise={exercise} />
+          ))}
+        </div>
       </div>
       <ExerciseForm />
 

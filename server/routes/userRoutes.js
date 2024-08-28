@@ -29,6 +29,10 @@ router.post('/signup', signupUser);
  */
 router.post('/login', loginUser);
 
+
+router.patch('/update-password', updateUserPassword);
+
+router.patch('/update-details', updateUserDetails);
 /**
  * This statement exports the router as the default export of the module.
  * This allows other modules to import the router and use it to define routes.

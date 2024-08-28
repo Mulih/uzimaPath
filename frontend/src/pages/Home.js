@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -21,6 +22,28 @@ const Home = () => {
                             <a href="/explore-latest" className="btn btn-primary btn-dark btn-lg px-4 me-md-2">Explore Latest</a>
                             <a href="/show-random" className="btn btn-outline-secondary btn-lg px-4 me-md-2">Random Workout</a>
                         </div>
+                    </div>
+                </div>
+            </section>
+            <section className='article-secion pb-4 pt-4'>
+                <div>
+                    <div className="d-flex mb-2 align-items-center">
+                        <h3>Latest Articles</h3>
+                    </div>
+                    <div className='article-post'>
+                        <h4>The Importance of Setting Achievable Goals</h4>
+                        <p>Learn how setting realistic and achievable goals can lead to long-term success in your fitness journey.</p>
+                        <Link to={"/articles/goal-setting"} className='col tex-center article__link'>Read More</Link>
+                    </div>
+                    <div className='article-post'>
+                        <h4>How to Stay Motivated</h4>
+                        <p>Discover tips and tricks to stay motivated and on track with your fitness goals.</p>
+                        <Link to={"/articles/motivation"} className='col tex-center article__link'>Read More</Link>
+                    </div>
+                    <div className='article-post'>
+                        <h4>How to Track Your Progress</h4>
+                        <p>Discover the best ways to track your progress and stay on track with your fitness goals.</p>
+                        <Link to={"/articles/progress-tracking"} className='col tex-center article__link'>Read More</Link>
                     </div>
                 </div>
             </section>

@@ -41,44 +41,56 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <h2>Dashboard</h2>
+      <div className='pb-4 pt-4 col-md-12'>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+          </ol>
+        </nav>
+        <h2>Dashboard</h2>
 
-      <div className="profile-overview">
-        <h3>Profile Overview</h3>
-        {/* Add profile-related content here */}
-      </div>
-
-      <div className="recent-activities">
-        <h3>Recent Activities</h3>
-
-        <div className="recent-goal">
-          <h4>Recent Goal</h4>
-          {goals && goals.length > 0 ? (
-            goals.slice(0, 3).map((goal, index) => (
-              <p key={index}>{goal.title}</p>
-            ))
-          ) : (
-            <p>No goals yet</p>
-          )}
+        <div className="profile-overview">
+          <h3>Profile Overview</h3>
+          {/* Add profile-related content here */}
         </div>
 
-        <div className="recent-exercise">
-          <h4>Recent Exercise</h4>
-          {exercises && exercises.length > 0 ? (
-            exercises.slice(0, 3).map((exercise, index) => (
-              <p>{exercises[0].title}</p>
-            ))
-          ) : (
-            <p>No exercises yet</p>
-          )}
-        </div>
-      </div>
 
-      <div className="account-settings">
-        <h3>Account Settings</h3>
-        {/* Add account settings-related content here */}
+
+        <div className="recent-activities">
+          <h3>Recent Activities</h3>
+
+          <div className="recent-goal">
+            <h4>Recent Goal</h4>
+            {goals && goals.length > 0 ? (
+              goals.slice(0, 3).map((goal, index) => (
+                <p key={index}>{goal.title}</p>
+              ))
+            ) : (
+              <p>No goals yet</p>
+            )}
+          </div>
+
+          <div className="recent-exercise">
+            <h4>Recent Exercise</h4>
+            {exercises && exercises.length > 0 ? (
+              exercises.slice(0, 3).map((exercise, index) => (
+                <p>{exercises[0].title}</p>
+              ))
+            ) : (
+              <p>No exercises yet</p>
+            )}
+          </div>
+        </div>
+
+        <div className="account-settings">
+          <h3>Account Settings</h3>
+          {/* Add account settings-related content here */}
+        </div>
+
       </div>
     </div>
+
   );
 };
 
