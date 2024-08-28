@@ -61,4 +61,17 @@ const updateUserPassword = async (req, res) => {
     }
 };
 
-export { signupUser, loginUser, updateUserPassword };
+const updateUserDetails = async () => {
+    const { firstName, lastName, email } = req.body;
+    const user_id = req.user._id;
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(user_id, { firstName, lastName, email }, { new: true });
+        res.status(200).json(updatedUser);
+
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    };
+};
+
+export { signupUser, loginUser, updateUserPassword, updateUserDetails };
