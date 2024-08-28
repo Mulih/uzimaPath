@@ -77,12 +77,12 @@ export const deleteGoal = async (req, res) => {
         return res.status(404).json({ error: 'No such goal exists' });
     }
     try {
-        const deletedGoal = await Goal.findByIdAndDelete({_id: id});
-        if (!deletedGoal) {
+        const goal = await Goal.findByIdAndDelete({_id: id});
+        if (!goal) {
             return res.status(404).json({ error: 'Goal not found.' });
         }
         console.log('Goal deleted successfully!')
-        res.status(200).json(deletedGoal);
+        res.status(200).json(goal);
     } catch (error) {
         console.log('Error while deleting goal', error);
         res.status(500).json({ error: 'Something went wrong!' });

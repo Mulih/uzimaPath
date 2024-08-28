@@ -22,8 +22,8 @@ const GoalDetails = ({ goal }) =>  {
     const data = await response.json();
 
     if (response.ok) {
-      dispatch({ type: 'SET_GOAL', payload: data });
-      console.log('Goal displayed:', data);
+      dispatch({ type: 'DELETE_GOAL', payload: data });
+      console.log('Goal deleted:', data);
     }
   }
 
@@ -37,7 +37,6 @@ const GoalDetails = ({ goal }) =>  {
         <p><strong>start_date: </strong> {goal.start_date}</p>
         <p>{formatDistanceToNow(new Date(goal.createdAt), { addSuffix: true })}</p>
         <span className="material-symbols-outlined" onClick={handleClick}>remove</span>
-
     </div>
   );
 }

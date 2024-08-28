@@ -3,7 +3,7 @@ import { useAuthContext } from '../Hooks/useAuthContext.js';
 
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
-const ExerciseDetails = ({ exercise }) =>  {
+export const ExerciseDetails = ({ exercise }) =>  {
 
   const { dispatch } = useExercisesContext();
   const { user } = useAuthContext();

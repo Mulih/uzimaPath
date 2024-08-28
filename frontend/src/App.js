@@ -11,6 +11,7 @@ import Admin from './pages/Admin.js';
 import About from './pages/About.js';
 import Contact from './pages/Contact.js';
 import Dashboard from './pages/Dashboard.js';
+import ExerciseBrowse from './components/ExerciseBrowse.js';
 
 
 function App() {
@@ -37,6 +38,10 @@ function App() {
           <Route
             path="/exercises"
             element={user ? <Exercises /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/exercises/:category"
+            element={user ? <ExerciseBrowse /> : <Navigate to="/login" />}
           />
           <Route
             path="/goals"

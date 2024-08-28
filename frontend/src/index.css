@@ -357,3 +357,66 @@ contact-page h1 {
     align-items: center;
   }
 }
+.dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboard h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.profile-overview,
+.recent-activities,
+.account-settings {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-overview h3,
+.recent-activities h3,
+.account-settings h3 {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.profile-overview p,
+.recent-goal p,
+.recent-exercise p {
+  margin: 5px 0;
+}
+
+.recent-goal,
+.recent-exercise {
+  margin-top: 15px;
+}
+
+.recent-goal h4,
+.recent-exercise h4 {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.recent-goal a,
+.recent-exercise a,
+.account-settings a,
+.profile-overview a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.recent-goal a:hover,
+.recent-exercise a:hover,
+.account-settings a:hover,
+.profile-overview a:hover {
+  text-decoration: underline;
+}
