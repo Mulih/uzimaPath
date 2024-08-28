@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useGoalsContext } from '../Hooks/useGoalsContext.js';
 import { useExercisesContext } from '../Hooks/useExercisesContext.js';
+import AccountSettings from '../components/AccountSettings.js';
 
 import { useAuthContext } from '../Hooks/useAuthContext.js';
 
@@ -85,7 +86,7 @@ const Dashboard = () => {
 
         <div className="account-settings">
           <h3>Account Settings</h3>
-          {/* Add account settings-related content here */}
+          <AccountSettings />
         </div>
 
       </div>
