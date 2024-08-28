@@ -31,7 +31,7 @@ export const ExerciseDetails = ({ exercise }) =>  {
     <div className='exercise-details'>
         <h4>{exercise.title}</h4>
         <p><strong>Weight (kg): </strong> {exercise.weight}</p>
-        <p><strong>Sets: </strong> {exercise.set}</p>
+        <p><strong>Sets: </strong> {exercise.sets}</p>
         <p><strong>Duration:</strong> {exercise.duration}</p>
         <p>{formatDistanceToNow(new Date(exercise.createdAt), { addSuffix: true })}</p>
         <span className="material-symbols-outlined" onClick={handleClick}>remove</span>

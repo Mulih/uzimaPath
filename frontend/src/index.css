@@ -497,3 +497,15 @@ contact-page h1 {
 .article-post a:hover {
   text-decoration: underline;
 }
+
+.recent-exercise p {
+  font-weight: bold;
+}
+
+.recent-goal p {
+  font-weight: bold;
+}
+
+.home-img {
+  border-radius: 10px;
+}

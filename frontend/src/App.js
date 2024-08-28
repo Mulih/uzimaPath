@@ -55,7 +55,7 @@ function App() {
           <Route path="/admin" element={user && user.isAdmin ? <Admin /> : <Navigate to="/login" />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<h1>Not Found</h1>} />
+          <Route path="*" element={<h1>Coming soon!!</h1>} />
         </Routes>
       </div>
     </BrowserRouter>

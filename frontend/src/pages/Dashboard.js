@@ -53,7 +53,7 @@ const Dashboard = () => {
 
         <div className="profile-overview">
           <h3>Profile Overview</h3>
-          {/* Add profile-related content here */}
+          {/* will add profile-related content here */}
         </div>
 
 
@@ -62,7 +62,7 @@ const Dashboard = () => {
           <h3>Recent Activities</h3>
 
           <div className="recent-goal">
-            <h4>Recent Goal</h4>
+            <h4>Recent Goals</h4>
             {goals && goals.length > 0 ? (
               goals.slice(0, 3).map((goal, index) => (
                 <p key={index}>{goal.title}</p>
@@ -73,10 +73,11 @@ const Dashboard = () => {
           </div>
 
           <div className="recent-exercise">
-            <h4>Recent Exercise</h4>
+            <h4>Recent Exercises</h4>
             {exercises && exercises.length > 0 ? (
               exercises.slice(0, 3).map((exercise, index) => (
-                <p>{exercises[0].title}</p>
+                <p key={index}>{exercise.title}</p>
+
               ))
             ) : (
               <p>No exercises yet</p>

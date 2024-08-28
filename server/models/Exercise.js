@@ -27,6 +27,7 @@ const ExerciseSchema = new mongoose.Schema(
         },
         sets: {
             type: Number,
+            required: true
 
         },
         weight: {
@@ -45,6 +46,10 @@ const ExerciseSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        isAdmin: {
+            type: Boolean,
+            default: false
+        }
     },
     { timestamps: true }
 );
